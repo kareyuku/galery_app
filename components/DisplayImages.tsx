@@ -6,6 +6,8 @@ import axios from "axios";
 
 interface IPhoto {
     id: string;
+    img: string;
+    author?: string;
     download_url: string;
 }
 
@@ -26,7 +28,7 @@ export default function DisplayImages() {
     return <div className="columns-2 lg:columns-4 md:columns-3 gap-4 space-y-4 mx-auto">
         {images.map((image) =>
             <div key={image.id} className="break-inside-avoid">
-                <Post img={image.download_url} />
+                <Post data={image} />
             </div>
         )}
     </div>

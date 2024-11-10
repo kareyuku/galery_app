@@ -1,8 +1,8 @@
 import Album from "@/components/Album";
 import DisplayImages from "@/components/DisplayImages";
 import Navbar from "@/components/Navbar"
-import { BiSolidPhotoAlbum } from "react-icons/bi";
-import { MdExplore } from "react-icons/md";
+import { BiPhotoAlbum } from "react-icons/bi";
+import { SlCompass } from "react-icons/sl";
 
 export default function Page() {
 
@@ -10,8 +10,8 @@ export default function Page() {
     <div>
       <Navbar />
         <section>
-          <span className="flex items-center gap-1 text-2xl mb-3">
-            <BiSolidPhotoAlbum />
+          <span className="flex items-center gap-3 text-2xl mb-5 mt-10">
+            <BiPhotoAlbum />
             Albumy
           </span>
 
@@ -23,8 +23,8 @@ export default function Page() {
 
         </section>
         <section>
-          <span className="flex items-center gap-1 text-2xl my-3">
-            <MdExplore />
+          <span className="flex items-center gap-3 text-2xl mb-5 mt-10">
+            <SlCompass />
             Odkrywaj
           </span>
           <DisplayImages />
