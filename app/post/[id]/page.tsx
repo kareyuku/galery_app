@@ -1,4 +1,5 @@
 import Comment from "@/components/Comment";
+import CommentInput from "@/components/CommentInput";
 import Navbar from "@/components/Navbar";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { GoComment } from "react-icons/go";
@@ -21,7 +22,7 @@ export default async function PostPage({ params }: params) {
                 <img src={`https://picsum.photos/id/${id}/2758/3622`} alt="cat" className="rounded-md h-[500px]" />
             </div>
             <div>
-                <div className="flex items-center gap-3 mb-3 mt-6 md:mt-0">
+                <div className="flex items-center gap-3 mb-3">
                     <Avatar className="h-8 w-8">
                         <AvatarImage src="https://github.com/shadcn.png" sizes="lg:16px" />
                     </Avatar>
@@ -37,6 +38,7 @@ export default async function PostPage({ params }: params) {
         <section>
             <h1 className="flex gap-2 items-center text-2xl mt-6"><GoComment /> Comments</h1>
             <article>
+                <CommentInput />
                 <Comment id={""} author="bartus" content={"lorem ipsum"} />
                 <Comment id={""} author="michał" content={"lorem ipsum"} />
                 <Comment id={""} author="kacper" content={"lorem ipsum"} />
