@@ -8,7 +8,6 @@ export default function Page() {
 
   return (
     <div>
-      <Navbar />
         <section>
           <span className="flex items-center gap-3 text-2xl mb-5 mt-10">
             <BiPhotoAlbum />
