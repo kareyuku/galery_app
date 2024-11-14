@@ -15,13 +15,11 @@ export default async function PostPage({ params }: params) {
     const { id } = await params;
 
     return <div>
-        <Navbar />
-
         <div className="flex gap-3 flex-col md:flex-row">
             <div className="mx-auto md:mx-0">
                 <img src={`https://picsum.photos/id/${id}/2758/3622`} alt="cat" className="rounded-md h-[500px]" />
             </div>
-            <div>
+            <div className="max-w-[600px]">
                 <div className="flex items-center gap-3 mb-3">
                     <Avatar className="h-8 w-8">
                         <AvatarImage src="https://github.com/shadcn.png" sizes="lg:16px" />
