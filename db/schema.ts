@@ -14,14 +14,16 @@ export const albumsTable = mysqlTable("albums", {
   userId: int("user_id").notNull()
 });
 
-export const posts = mysqlTable("posts", {
+export const postsTable = mysqlTable("posts", {
   id: int("id").primaryKey().autoincrement(),
   albumId: int("album_id"),
+  userId: int("user_id").notNull(),
   imageUrl: varchar({ length: 255 }).notNull(),
+  title: varchar({ length: 255 }).notNull(),
   description: text("description"),
 });
 
-export const likes = mysqlTable(
+export const likesTable = mysqlTable(
   "likes",
   {
     userId: int("user_id").notNull(),

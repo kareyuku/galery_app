@@ -4,6 +4,8 @@ import { getServerSession } from "next-auth";
 
 import nextAuthConfig from "@/lib/nextAuth";
 
+import { IoAddCircleOutline } from "react-icons/io5";
+
 export default async function Navbar() {
 
   const session = await getServerSession(nextAuthConfig);
@@ -17,6 +19,12 @@ export default async function Navbar() {
         {session
           ? <div className="flex gap-3 items-center">
             {session.user.username}
+
+            <Link href="/upload">
+              <Button variant={"outline"} className={"border-primary px-3 hover:bg-black hover:text-white"} >
+                <IoAddCircleOutline />
+              </Button>
+            </Link>
             <Link href="/api/auth/signout">
               <Button variant={"outline"} className={"border-primary hover:bg-black hover:text-white"} >Sign Out</Button>
             </Link>

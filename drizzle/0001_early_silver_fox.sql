@@ -1,0 +1,1 @@
+ALTER TABLE `posts` ADD `user_id` int NOT NULL;

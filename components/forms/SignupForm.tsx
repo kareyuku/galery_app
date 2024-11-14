@@ -15,6 +15,8 @@ import {
 import { z } from "zod";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
     username: z.string().min(2, {
@@ -30,6 +32,8 @@ const formSchema = z.object({
 
 export default function SignupForm() {
 
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -39,10 +43,21 @@ export default function SignupForm() {
         },
     })
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        console.log(values)
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
+        const response = await fetch("/api/auth/user", {
+            method: "POST",
+            body: JSON.stringify({
+                username: values.username,
+                password: values.password,
+            }),
+        });
+
+        if(response.status === 201) {
+            router.push("/signin?registered=true");
+        } else {
+            const data = await response.json();
+            console.log('error')
+        }
     }
 
     return <Form {...form}>
@@ -67,7 +82,7 @@ export default function SignupForm() {
                 <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                        <Input placeholder="Enter a password..." {...field} />
+                        <Input type="password" placeholder="Enter a password..." {...field} />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
@@ -80,7 +95,7 @@ export default function SignupForm() {
                 <FormItem>
                     <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                        <Input placeholder="Confirm a password..." {...field} />
+                        <Input type="password" placeholder="Confirm a password..." {...field} />
                     </FormControl>
                     <FormMessage />
                 </FormItem>
